@@ -4,7 +4,9 @@ from app.models.user_model import User
 
 from app.repositories.user_repository import UserRepository
 
-from app.schemas.user_schema import UserCreate
+from app.schemas.user_schema import (
+    UserCreate,
+    )
 
 from app.core.security import hash_password
 
@@ -46,3 +48,17 @@ class UserService:
         )
 
         return self.repository.create(user)
+    
+    def get_by_email(
+            self,
+            email: str
+    ):
+        user = self.repository.get_by_email(email)
+
+        if not user:
+            raise HTTPException(
+                status_code=400,
+                detail="Não foi encontrado nenhum perfil com este email"
+            )
+        
+        return user

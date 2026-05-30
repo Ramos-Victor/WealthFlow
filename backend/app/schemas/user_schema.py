@@ -12,10 +12,8 @@ class UserCreate(BaseModel):
         max_length=64
     )
 
-
 class UserResponse(BaseModel):
 
     id: int
     name: str
     email: EmailStr
-

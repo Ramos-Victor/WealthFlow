@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from sqlmodel import SQLModel
 
 from app.models.user_model import User
+from app.models.categoria_model import Categoria
 
 from logging.config import fileConfig
 

@@ -45,7 +45,8 @@ class AuthService:
         token = create_access_token(
             {
                 "sub": str(user.id),
-                "email": user.email
+                "email": user.email,
+                "nome": user.name
             }
         )
 
