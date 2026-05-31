@@ -19,3 +19,9 @@ class CategoriaResponse(BaseModel):
     type: typeCategoria
     color: str
     user_id: int
+
+class CategoriaUpdate(BaseModel):
+
+    name: str | None = None
+    type: typeCategoria | None = None
+    color: str | None = None

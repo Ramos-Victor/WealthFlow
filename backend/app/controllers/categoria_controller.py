@@ -9,7 +9,8 @@ from app.services.categoria_service import CategoriaService
 
 from app.schemas.categoria_schema import (
     CategoriaCreate,
-    CategoriaResponse
+    CategoriaResponse,
+    CategoriaUpdate
 )
 
 router = APIRouter(
@@ -32,3 +33,42 @@ def create_categoria(
     service = CategoriaService(repository)
 
     return service.create_categoria(data)
+
+@router.get(
+    "/{user_id}",
+    response_model=list[CategoriaResponse]
+)
+def get_all_by_user(
+    user_id: int,
+    session: Session = Depends(get_session)
+):
+    repository = CategoriaRepository(session)
+
+    service = CategoriaService(repository)
+
+    return service.get_all_by_user(user_id)
+
+@router.put("/{categoria_id}")
+def categoria_update(
+    categoria_id: int,
+    data: CategoriaUpdate,
+    session: Session = Depends(get_session)
+):
+    
+    repository = CategoriaRepository(session)
+
+    service = CategoriaService(repository)
+
+    return service.update_categoria(data, categoria_id)
+
+@router.delete("/{categoria_id}")
+def categoria_delete(
+    categoria_id: int,
+    session: Session = Depends(get_session)
+):
+    
+    repository = CategoriaRepository(session)
+
+    service = CategoriaService(repository)
+
+    return service.delete_categoria(categoria_id)
