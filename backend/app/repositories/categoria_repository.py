@@ -36,7 +36,7 @@ class CategoriaRepository:
         return self.session.exec(stmt).all()
     
     
-    def update(self, categoria: Categoria):
+    def update_categoria(self, categoria: Categoria):
 
         self.session.add(categoria)
         self.session.commit()
@@ -44,7 +44,7 @@ class CategoriaRepository:
 
         return categoria
 
-    def delete(
+    def delete_categoria(
         self,
         categoria: Categoria
     ):

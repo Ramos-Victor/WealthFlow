@@ -34,7 +34,7 @@ class CategoriaService:
     
     def get_all_by_user(
         self,
-         user_id: int
+        user_id: int
     ):
         categorias = self.repository.get_all_by_user(user_id)
 
@@ -49,7 +49,7 @@ class CategoriaService:
     def update_categoria(
         self,
         data: CategoriaUpdate,
-        categoria_id = int,
+        categoria_id = int
     ):
         
         categoria = self.repository.get_by_id(categoria_id)
@@ -62,7 +62,7 @@ class CategoriaService:
         for field, value in update_data.items():
             setattr(categoria, field, value)
 
-        return self.repository.update(categoria)
+        return self.repository.update_categoria(categoria)
     
     def delete_categoria(
         self,
@@ -77,7 +77,7 @@ class CategoriaService:
                 detail="Categoria não encontrada"
             )
         
-        self.repository.delete(categoria)
+        self.repository.delete_categoria(categoria)
 
         return{
             "message": "Categoria deletada com sucesso!"

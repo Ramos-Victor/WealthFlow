@@ -6,6 +6,7 @@ from sqlmodel import SQLModel
 
 from app.models.user_model import User
 from app.models.categoria_model import Categoria
+from app.models.account_model import Account
 
 from logging.config import fileConfig
 
