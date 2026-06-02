@@ -7,6 +7,7 @@ from sqlmodel import SQLModel
 from app.models.user_model import User
 from app.models.categoria_model import Categoria
 from app.models.account_model import Account
+from app.models.transactions_model import Transaction
 
 from logging.config import fileConfig
 

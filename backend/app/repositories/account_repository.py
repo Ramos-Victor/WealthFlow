@@ -19,7 +19,7 @@ class AccountRepository:
 
         return account
     
-    def get_by_id(self, account_id = int):
+    def get_by_id(self, account_id : int):
 
         stmt = select(Account).where(
             Account.id == account_id
@@ -27,13 +27,18 @@ class AccountRepository:
 
         return self.session.exec(stmt).first()
     
-    def get_all_account(self, user_id = int):
+    def get_all_account(self, user_id : int):
 
         stmt = select(Account).where(
             Account.user_id == user_id
         )
 
         return self.session.exec(stmt).all()
+    
+    def get_by_id_for_update(self, account_id : int):
+        stmt = select(Account).where(Account.id == account_id).with_for_update()
+
+        return self.session.exec(stmt).first()
     
     def update_account(self, account: Account):
 
